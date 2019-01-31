@@ -5,6 +5,9 @@ using UnityEngine;
 public class ButtonScript : MonoBehaviour
 {
     public string _PrintText;
+    public GameObject player;
+    public int count;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,5 +35,15 @@ public class ButtonScript : MonoBehaviour
         GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
         cube.AddComponent<Rigidbody>();
         cube.transform.position = new Vector3(1, 10, -5);
+    }
+
+    public void SpawnLotsOfSpheres()
+    {
+        for(int i = 0; i < count; i++)
+        {
+            GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            sphere.AddComponent<Rigidbody>();
+            sphere.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 1, player.transform.position.z + i);
+        }
     }
 }
